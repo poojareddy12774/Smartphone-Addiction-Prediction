@@ -1,0 +1,135 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<h3>AI Phone Addiction Prediction</h3>
+
+<div class="card p-4 shadow">
+
+<form method="post">
+{% csrf_token %}
+
+<div class="row">
+
+<div class="col-md-3">
+<label>Age</label>
+<input type="number" name="age" class="form-control" required>
+</div>
+
+<div class="col-md-3">
+<label>Gender</label>
+<select name="gender" class="form-control">
+<option value="0">Female</option>
+<option value="1">Male</option>
+<option value="2">Other</option>
+</select>
+</div>
+
+<div class="col-md-3">
+<label>Daily Usage Hours</label>
+<input type="number" step="any" name="daily_usage" class="form-control">
+</div>
+
+<div class="col-md-3">
+<label>Sleep Hours</label>
+<input type="number" step="any" name="sleep_hours" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Social Interactions</label>
+<input type="number" name="social_interactions" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Exercise Hours</label>
+<input type="number" step="any" name="exercise_hours" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Anxiety Level</label>
+<input type="number" name="anxiety" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Depression Level</label>
+<input type="number" name="depression" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Self Esteem</label>
+<input type="number" name="self_esteem" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Parental Control</label>
+<input type="number" name="parental_control" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Screen Time Before Bed</label>
+<input type="number" step="any" name="screen_before_bed" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Phone Checks Per Day</label>
+<input type="number" name="phone_checks" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Apps Used Daily</label>
+<input type="number" name="apps_used" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Time on Social Media</label>
+<input type="number" step="any" name="time_social" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Time Gaming</label>
+<input type="number" step="any" name="time_gaming" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Time Education</label>
+<input type="number" step="any" name="time_education" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Usage Purpose</label>
+<select name="purpose" class="form-control">
+<option value="0">Browsing</option>
+<option value="1">Education</option>
+<option value="2">Gaming</option>
+<option value="3">Other</option>
+<option value="4">Social Media</option>
+</select>
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Family Communication</label>
+<input type="number" name="family_comm" class="form-control">
+</div>
+
+<div class="col-md-3 mt-3">
+<label>Weekend Usage</label>
+<input type="number" step="any" name="weekend_usage" class="form-control">
+</div>
+
+</div>
+
+<button class="btn btn-primary mt-4">Run Prediction</button>
+
+</form>
+
+{% if result %}
+<div class="alert alert-success mt-4">
+Prediction Result: <b>{{ result }}</b><br>
+Confidence: <b>{{ confidence }}%</b><br>
+Recommendation: <b>{{ suggestion }}</b>
+</div>
+{% endif %}
+
+</div>
+
+{% endblock %}
